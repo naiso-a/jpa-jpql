@@ -117,7 +117,7 @@ public class ActeurRepositoryTest {
 		List<Acteur> acteurs = query.getResultList();
 		assertEquals(27, acteurs.size());
 	}
-	
+
 	/**
 	 * Extraire la liste de tous les réalisateurs ayant réalisé un film dans lequel Brad Pitt a joué
 	 */
@@ -127,12 +127,12 @@ public class ActeurRepositoryTest {
 		List<Realisateur> acteurs = query.getResultList();
 		assertEquals(6, acteurs.size());
 	}
-	
+
 	@BeforeEach
 	public void ouvertureEm() {
 		em = emf.createEntityManager();
 	}
-	
+
 	@AfterEach
 	public void fermetureEm() {
 		em.close();
@@ -142,9 +142,9 @@ public class ActeurRepositoryTest {
 	public static void initDatabase() {
 		emf = Persistence.createEntityManagerFactory("movie_db");
 		EntityManager em = emf.createEntityManager();
-		
+
 		try {
-			
+
 			if (em.createQuery("FROM Acteur").getResultList().size()==0) {
 				em.getTransaction().begin();
 				Path home = Paths.get(ActeurRepositoryTest.class.getClassLoader().getResource("data.sql").toURI());
